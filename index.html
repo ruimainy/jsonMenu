@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>js多级自定义菜单</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/idb.menu.js"></script>
+<link rel="stylesheet" href="css/idb.menu.css"  />
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+$(function(){
+
+	$.ajax({
+		url: 'js/idb.json.js',
+		dataType: 'json',
+		success: function(data) {
+			console.log(data)
+			var config = {
+                            jsonData: 'SubMenu',
+                            jsonName: 'Name',
+                            itemClickCallBack: menuItemClick,
+                            isUrl: UrlContent
+                        };
+			iListMenu = $('#menu_root').idbListWrap(config);
+			iListMenu.setData(data);
+		}
+	});
+
+	function menuItemClick(itemsData) {
+        var clickedItem = itemsData[itemsData.length - 1];
+        document.title = clickedItem.Name;
+    };
+
+    function UrlContent(path) {
+	    return path.replace(/^\//, '');
+	};
+
+})
+</script>
+</head>
+<body>
+<div id='menu_root' class="r_main">
+</div>
+</body>
+</html>
