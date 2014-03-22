@@ -1,8 +1,9 @@
 jsonMenu
 ========
 使用方法：
+=== <textarea>
 var config = {
-      jsonData: 'SubMenu',
+      jsonData: 'SubMenu', <br/>
       jsonName: 'Name',
       itemClickCallBack: menuItemClick,  // 调用外部方法
       isUrl: UrlContent // 调用外部方法
@@ -17,7 +18,7 @@ function menuItemClick(itemsData) {
 function UrlContent(path) {
   return path.replace(/^\//, '');
 };
-
+=== </textarea>
 // 菜单列表的链接地址，修改idb.json.js文件的URL内容。
 // 即返回的JSON数据的URL值就是链接地址。
 
